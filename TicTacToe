@@ -1,1 +1,66 @@
 
+class Main {
+    public static void main(String[] args) {
+        //initialize the TicTacToe game
+
+        //Play game
+        
+    }
+}
+
+//constructor
+class TicTacToe {
+    private static final int BOARDSIZE = 3;
+    private char[][] board = new char[BOARDSIZE][BOARDSIZE]
+
+    private enum Status {
+        WIN,
+        DRAW,
+        CONTINUE
+    }
+
+    private boolean firstPlayer;
+    private boolean gameOver;
+
+    public TicTacToe() {
+        firstPlayer = true;
+        gameOver = false;
+
+    //Nested loop to iterate through the board matrix and initiate each square to an empty space ' '
+            
+        }
+
+    //play
+    public void play() {
+
+        //implement functions here with win condition loop
+        
+    }
+
+    //printstatus(in player:int)
+    private void printStatus(int player){
+        
+    }
+    
+    //gameStatus(): WIN, DRAW, CONTINUE :status
+    private Status gameStatus(){
+        return Status.CONTINUE;
+    }
+
+    //print board()
+    public void printBroard(){
+        
+    }
+
+    //print symbol
+    private void printSymbol(int col,char value){
+        
+    }
+
+    //validmove(in row:int,in column:int):bool
+    private boolean validMove(int row,int column){
+        return true;
+    }
+    
+}
+
