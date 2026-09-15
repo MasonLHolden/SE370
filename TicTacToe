@@ -1,9 +1,12 @@
 
-class Main {
+public class Main {
     public static void main(String[] args) {
         //initialize the TicTacToe game
+        TicTacToe game = new TicTacToe();
 
         //Play game
+
+        game.play();
         
     }
 }
@@ -27,6 +30,12 @@ class TicTacToe {
         gameOver = false;
 
     //Nested loop to iterate through the board matrix and initiate each square to an empty space ' '
+
+        for(int row = 0; row < BOARDSIZE; row++){
+            for(int col = 0; col < BOARDSIZE; col++){
+                board[row][col]=' ';
+            }
+         }
             
         }
 
@@ -63,4 +72,3 @@ class TicTacToe {
     }
     
 }
-
