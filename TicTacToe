@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 
 public class Main {
     public static void main(String[] args) {
@@ -14,7 +16,7 @@ public class Main {
 //constructor
 class TicTacToe {
     private static final int BOARDSIZE = 3;
-    private char[][] board = new char[BOARDSIZE][BOARDSIZE]
+    private char[][] board = new char[BOARDSIZE][BOARDSIZE];
 
     private enum Status {
         WIN,
@@ -39,15 +41,61 @@ class TicTacToe {
             
         }
 
-    //play
     public void play() {
 
-        //implement functions here with win condition loop
+    Scanner input = new Scanner(System.in);
+
+    char player = 'O';
+
+    while (!gameOver) {
         
+        printBoard();
+        System.out.println("Player " + player + "'s turn.");
+        
+        System.out.print("Player " + player +
+                         ": Enter row ( 0, 1 or 2 ): ");
+        int row = input.nextInt();
+
+        System.out.print("Player " + player +
+                         ": Enter column ( 0, 1 or 2 ): ");
+        int column = input.nextInt();
+
+        if (!validMove(row, column)) {
+            System.out.println("Invalid move. Try again.");
+            continue;
+        }
+
+        // Place the player's symbol
+        board[row][column] = player;
+
+        // Check game status
+        Status status = gameStatus();
+
+        if (status == Status.WIN || status == Status.DRAW) {
+
+            gameOver = true;
+
+            printBoard();
+            printStatus(player);
+
+        }
+        else {
+
+            // Switch players
+            if (player == 'O') {
+                player = 'X';
+            }
+            else {
+                player = 'O';
+            }
+        }
     }
 
-   //printstatus(in player:int)
-    private void printStatus(int player){
+    input.close();
+}
+
+    //printstatus(in player:int)
+    private void printStatus(char player){
 
         Status status = gameStatus();
 
@@ -106,7 +154,7 @@ class TicTacToe {
     public void printBoard(){
 
      for (int row = 0; row < BOARDSIZE; row++) {
-        System.out.print((row + 1) + " ");
+        System.out.print("  ");
 
         for (int column = 0; column < BOARDSIZE; column++) {
     printSymbol(column, board[row][column]);
