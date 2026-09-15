@@ -34,8 +34,8 @@ class TicTacToe {
         for(int row = 0; row < BOARDSIZE; row++){
             for(int col = 0; col < BOARDSIZE; col++){
                 board[row][col]=' ';
+                }
             }
-         }
             
         }
 
@@ -58,11 +58,29 @@ class TicTacToe {
 
     //print board()
     public void printBroard(){
-        
+
+     for (int row = 0; row < BOARDSIZE; row++) {
+        System.out.print((row + 1) + " ");
+
+        for (int column = 0; column < BOARDSIZE; column++) {
+    printSymbol(column, board[row][column]);
+        }
+
+        System.out.println();
+
+        if (row < BOARDSIZE - 1) {
+            System.out.println(" ---+---+---");
+            }
+        }
     }
 
     //print symbol
     private void printSymbol(int col,char value){
+        System.out.print(value);
+
+        if(col < BOARDSIZE - 1){
+            System.out.print(" | ")
+        }
         
     }
 
