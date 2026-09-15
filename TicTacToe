@@ -46,9 +46,17 @@ class TicTacToe {
         
     }
 
-    //printstatus(in player:int)
+   //printstatus(in player:int)
     private void printStatus(int player){
-        
+
+        Status status = gameStatus();
+
+        if(status == Status.WIN){
+            System.out.println("Player "+player+" wins.");
+        }
+        else if (status == Status.DRAW){
+            System.out.println("DRAW");
+        }
     }
     
     //gameStatus(): WIN, DRAW, CONTINUE :status
