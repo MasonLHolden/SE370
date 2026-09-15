@@ -52,12 +52,50 @@ class TicTacToe {
     }
     
     //gameStatus(): WIN, DRAW, CONTINUE :status
-    private Status gameStatus(){
-        return Status.CONTINUE;
+   private Status gameStatus() {
+
+    // Check rows
+    for (int row = 0; row < BOARDSIZE; row++) {
+
+        if (board[row][0] != ' ' && board[row][0] == board[row][1] && board[row][1] == board[row][2]) {
+            return Status.WIN;
+        }
     }
 
+    // Check columns
+    for (int column = 0; column < BOARDSIZE; column++) {
+
+        if (board[0][column] != ' ' && board[0][column] == board[1][column] && board[1][column] == board[2][column]) {
+            return Status.WIN;
+        }
+    }
+
+    // Check diagonal: top-left to bottom-right
+    if (board[0][0] != ' ' && board[0][0] == board[1][1] && board[1][1] == board[2][2]) { 
+        return Status.WIN;
+    }
+
+    // Check diagonal: top-right to bottom-left
+    if (board[0][2] != ' ' && board[0][2] == board[1][1] && board[1][1] == board[2][0]) {
+        return Status.WIN;
+    }
+
+    // Check if the board is full
+    for (int row = 0; row < BOARDSIZE; row++) {
+
+        for (int column = 0; column < BOARDSIZE; column++) {
+
+            if (board[row][column] == ' ') {
+                return Status.CONTINUE;
+            }
+        }
+    }
+
+    return Status.DRAW;
+}
+
     //print board()
-    public void printBroard(){
+    public void printBoard(){
 
      for (int row = 0; row < BOARDSIZE; row++) {
         System.out.print((row + 1) + " ");
@@ -79,14 +117,30 @@ class TicTacToe {
         System.out.print(value);
 
         if(col < BOARDSIZE - 1){
-            System.out.print(" | ")
+            System.out.print(" | ");
         }
         
     }
 
     //validmove(in row:int,in column:int):bool
-    private boolean validMove(int row,int column){
-        return true;
+    private boolean validMove(int row, int column) {
+
+    // Check row 
+    if (row < 0 || row >= BOARDSIZE) {
+        return false;
     }
+
+    // Check col
+    if (column < 0 || column >= BOARDSIZE) {
+        return false;
+    }
+
+    // Check if square is already occupied
+    if (board[row][column] != ' ') {
+        return false;
+    }
+
+    return true;
+}
     
 }
